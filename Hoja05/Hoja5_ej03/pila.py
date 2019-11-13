@@ -29,15 +29,16 @@ class Pila:
         if self.checkIndex() and self.checkOrden(discon) or self.isEmpty():
             self.pointer+=1
             self.pila[self.pointer] = discon
+            return True
         else:
-            print('No se puede relizar la operacion')
+            #print('No se puede relizar el push')
+            return False
             
-    def pop(self, disco):
-        if self.checkIndex():
+    def pop(self):
+        if self.isEmpty() == False and self.checkIndex():
             self.pointer-=1
-            return self.pila[self.pointer+1]
-        else:
-            print('No se puede realizar la opereación')
+        #else:
+            #print('No se puede realizar el pop')
 
     def isEmpty(self):
         if self.pointer == -1:
