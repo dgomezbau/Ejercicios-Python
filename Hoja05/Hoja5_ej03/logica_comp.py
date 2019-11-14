@@ -104,8 +104,12 @@ for i in range(numero_discos):
 printJuego(numero_discos)
 
 paso = 0
-
+ult_jugada = ''
 while (tor_d.getPointer()<numero_discos-1):
+    paso += 1
+    print(paso)
+
+    #Esquema básico:
     '''try:
         pasoDiscoAuto(tor_o, tor_d)
     except:
@@ -125,36 +129,53 @@ while (tor_d.getPointer()<numero_discos-1):
                             pasoDiscoAuto(tor_d, tor_o)
                         except:
                             pass'''
-    paso += 1
-    print(paso)
-    if paso ==5 or paso ==6:
-        try:
-            pasoDiscoAuto(tor_a, tor_o)
-        except:
-            try:
-                pasoDiscoAuto(tor_a, tor_d)
-            except:
-                pass
-    else: 
-        try:
+
+    
+    
+    try:
+        if ult_jugada != 'do':
             pasoDiscoAuto(tor_o, tor_d)
+            ult_jugada = 'od'
+        else:
+            raise Exception
+    except:
+        try:
+            if ult_jugada != 'ao':
+                pasoDiscoAuto(tor_o, tor_a)
+                ult_jugada = 'oa'
+            else:
+                raise Exception      
         except:
             try:
-                pasoDiscoAuto(tor_o, tor_a)
+                if ult_jugada != 'da':
+                    pasoDiscoAuto(tor_a, tor_d)
+                    ult_jugada = 'ad'
+                else:
+                    raise Exception
             except:
                 try:
-                    pasoDiscoAuto(tor_a, tor_d)
+                    if ult_jugada != 'ad':
+                        pasoDiscoAuto(tor_d, tor_a)
+                        ult_jugada = 'da'
+                    else:
+                        raise Exception
                 except:
                     try:
-                        pasoDiscoAuto(tor_d, tor_a)
+                        if ult_jugada != 'oa' and ult_jugada !='da':
+                            pasoDiscoAuto(tor_a, tor_o)
+                            ult_jugada = 'ao'
+                        else:
+                            raise Exception
                     except:
                         try:
-                            pasoDiscoAuto(tor_a, tor_o)
-                        except:
-                            try:
+                            if ult_jugada != 'od':
                                 pasoDiscoAuto(tor_d, tor_o)
-                            except:
-                                pass
+                                ult_jugada = 'do'
+                            else:
+                                raise Exception
+                        except:
+                            pass
 
     printJuego(numero_discos)
-        
+    
+print('¡¡¡Conseguido!!!')      
