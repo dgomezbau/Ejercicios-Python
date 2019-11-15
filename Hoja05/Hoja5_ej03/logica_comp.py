@@ -174,7 +174,7 @@ while (tor_d.getPointer()<numero_discos-1):
                             else:
                                 raise Exception
                         except:
-                            pass
+                            print('Punto muerto')
 
     printJuego(numero_discos)
     
