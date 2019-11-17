@@ -1,5 +1,5 @@
 # Ejercicios-Python
 Ejercicios Python del curso de Movicoders
 
-Actualizado el 15/11/2019:
- - Trabajando en el ejericicio 3 de la hoja 6
+Actualizado el 17/11/2019:
+ - Trabajando terminado ejercicio 4 hoja 6
