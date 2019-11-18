@@ -19,10 +19,7 @@ for i in arr_lineas:
     for j in i:
         cont_pos+=1
         if j.lower() == palabra[pointer]:
-            print(j)
             pointer+= 1
-            print(pointer)
-            print(len(palabra))
             if pointer == len(palabra)-1:
                 print('La palabra está contenida')
                 break

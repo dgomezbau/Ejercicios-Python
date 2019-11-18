@@ -60,7 +60,6 @@ def elimina_celula(tablero, fila, columna):
     
     return tablero
 
-#No es perfecto, puede que se pierdan nacimientos.
 def next_gen(tablero):
     tablero_nuevo=tablero_vacio(len(tablero))
     for i in range (len(tablero)):

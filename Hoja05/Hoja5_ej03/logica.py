@@ -96,10 +96,11 @@ for i in range(numero_discos):
 
 
 printJuego(numero_discos)
-
+movimientos = 0
 #Lógica del juego
 
 while (tor_d.getPointer()<numero_discos-1):
+    print(movimientos)
 
     user_o = input('Introduce pila de la que tomar el último disco (o, a, d): ')
     user_d = input('Introduce pila en la que depositar el disco (o, a, d): ')
@@ -128,6 +129,8 @@ while (tor_d.getPointer()<numero_discos-1):
         print('Input incorreco')
 
     printJuego(numero_discos)
+
+    movimientos += 1
 
 print('PUZZLE COMPLETADO') 
     
