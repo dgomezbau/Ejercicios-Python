@@ -125,6 +125,16 @@ while (tor_d.getPointer()<numero_discos-1):
     elif user_o == 'd' and user_d == 'a':
         pasoDisco(tor_d, tor_a)
 
+    elif user_o == '0' and user_d == '1':
+        pasoDisco(tor_o, tor_d)
+        pasoDisco(tor_o, tor_a)
+        pasoDisco(tor_d, tor_a)
+        pasoDisco(tor_o, tor_d)
+        pasoDisco(tor_a, tor_o)
+        pasoDisco(tor_a, tor_d)
+        pasoDisco(tor_o, tor_d)
+        movimientos += 6
+ 
     else:
         print('Input incorreco')
 

@@ -131,8 +131,8 @@ while (tor_d.getPointer()<numero_discos-1):
                             pass'''
 
     
-    
-    try:
+    #Esquema que funciona en impares pero con movimientos extra:
+    '''try:
         if ult_jugada != 'do':
             pasoDiscoAuto(tor_o, tor_d)
             ult_jugada = 'od'
@@ -174,8 +174,87 @@ while (tor_d.getPointer()<numero_discos-1):
                             else:
                                 raise Exception
                         except:
-                            print('Punto muerto')
+                            print('Punto muerto')'''
 
+    '''pasoDiscoAuto(tor_o, tor_d) #1D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_a) #2A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #1A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #3D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_o) #1O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_d) #2D
     printJuego(numero_discos)
     
+    pasoDiscoAuto(tor_o, tor_d) #1D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_a) #4A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #1A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_o) #2O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_o) #1O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #3A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #1D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_a) #2A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #1A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #5D
+    printJuego(numero_discos)
+
+    pasoDiscoAuto(tor_d, tor_o) #1O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_d) #2D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #1D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_o) #3O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #1A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #5D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_o) #2O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #5D
+    printJuego(numero_discos)
+
+    pasoDiscoAuto(tor_a, tor_o) #1O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_d) #4D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #1D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_a) #2A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_d, tor_a) #1A
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #3D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_o) #1O
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_a, tor_d) #2D
+    printJuego(numero_discos)
+    pasoDiscoAuto(tor_o, tor_d) #1D'''
+    
+    
+    printJuego(numero_discos)
+
+def doTowers (n, origen, aux, destino):
+        if n==1:
+            print('Disk 1 from ' + origen + 'to'+ destino) 
+        else:
+            doTwers(n-1, origen, aux, destino)
+            print('Disk ' + str(n) + ' desde ' + origen + ' to '+ destino)
+    
+    doTowers(5, 'O', 'A', 'D')
+
 print('¡¡¡Conseguido!!!')      
