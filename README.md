@@ -1,5 +1,5 @@
 # Ejercicios-Python
 Ejercicios Python del curso de Movicoders
 
-Actualizado el 17/11/2019:
- - Finalizada hoja 6. Pendientes algunos retoques y finalizar torres Hanoi
+Actualizado el 21/11/2019:
+ - Trabajando en el ejercicio 6 de la hoja 7
