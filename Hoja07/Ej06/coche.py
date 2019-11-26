@@ -1,6 +1,6 @@
 class Coche():
 
-    def __init__ (self, matricula:str, maxLitrosDeposito:float, maxLitrosReserva:float, velodidadMaxima:float, consumoMedio100km:float):
+    def __init__ (self, matricula:str, maxLitrosDeposito:float, velodidadMaxima:float, consumoMedio100km:float):
         self.matricula = matricula
 
         if maxLitrosDeposito>=0:
@@ -62,11 +62,11 @@ class Coche():
         return self.kilometraje
 
     def arrancarMotor(self):
-        if self.arrancarMotor:
+        if self.motorArrancado:
             print('El coche con matrícula %s ya está en marcha' % self.matricula)
         else:
             if self.numLitrosActual>0:
-                self.arrancarMotor = True
+                self.motorArrancado = True
                 print('El coche con matrícula %s ha arrancado' % self.matricula)
                 if self.numLitrosActual<= self.maxLitrosReserva:
                     print('El coche con matrícula %s esta en reserva' % self.matricula)
@@ -74,25 +74,55 @@ class Coche():
                 print('El coche con matrícula %s no se puede arrancar por falta de gasolina' % self.matricula)
 
     def pararMotor(self):
-         if self.arrancarMotor:
-            self.arrancarMotor = False
+         if self.motorArrancado:
+            self.motorArrancado = False
             print('El coche con matrícula %s se ha parado' % self.matricula)
 
-    def repostar(self, litos:float):
+    def repostar(self, litros:float):
         if litros+self.numLitrosActual>self.maxLitrosDeposito:
             self.numLitrosActual = self.maxLitrosDeposito
             print('El coche con matrícula %s ha rebosado el depósito' % self.matricula)
         elif litros+self.numLitrosActual>0 and litros+self.numLitrosActual <=self.maxLitrosDeposito:
             self.numLitrosActual = self.numLitrosActual+litros
-            print('El coche con matrícula %s tiene %s litros de combustible' % self.matricula, self.numLitrosActual)
+            print('El coche con matrícula %s tiene %s litros de combustible' % (self.matricula, self.numLitrosActual))
         else:
-            print('El coche con matrícula %s tiene %s litros de combustible' % self.matricula, self.numLitrosActual)
+            print('El coche con matrícula %s tiene %s litros de combustible' % (self.matricula, self.numLitrosActual))
         
-    #Trabajar en este
     def fijarVelocidad(self, velocidad:float):
-        if velocidad>=0:
-            self.velocidadActual = velocidad
+        if self.motorArrancado:
+            if velocidad>self.velocidadMaxima:
+                self.velocidadActual = self.velocidadMaxima
+                print('El coche con matrícula %s va a una velocidad de %s km/h' % (self.matricula, self.velocidadActual))
+            elif velocidad<0:
+                self.velocidadActual = 0
+                print('El coche con matrícula %s va a una velocidad de %s km/h' % (self.matricula, self.velocidadActual))
+            else:
+                self.velocidadActual = velocidad
+                print('El coche con matrícula %s va a una velocidad de %s km/h' % (self.matricula, self.velocidadActual))
         else:
-            print('La velocidad tiene que ser mayor que 0') 
+            print('El coche con matrícula %s está parado' % self.matricula)
 
     def recorrerDistancia(self, kilometros:float):
+        if self.motorArrancado and self.velocidadActual>0:
+            if kilometros <=0:
+                print('Distancia no válida')
+            else:
+                consumoInstantaneo = self.consumoMedio100km*(1+(self.velocidadActual-100)/100)
+                litrosNecesarios = kilometros*consumoInstantaneo/100
+                if litrosNecesarios<self.numLitrosActual:
+                    self.kilometraje+=kilometros
+                    print('El coche con matrícula %s ha recorrido %s Km' % (self.matricula, kilometros))
+                    self.numLitrosActual-=litrosNecesarios
+                    if self.numLitrosActual<= self.maxLitrosReserva:
+                        self.estaEnReserva = True
+                else:
+                    distanciaReal = 100*self.numLitrosActual/consumoInstantaneo
+                    self.kilometraje+= distanciaReal
+                    self.numLitrosActual = 0
+                    self.estaEnReserva = True
+                    print('El coche con matrícula %s ha recorrido %s Km' % (self.matricula, distanciaReal))
+                    print('El coche con matrícula %s está sin combustible' % self.matricula)
+                    print('El coche con matrícula %s está parado' % self.matricula)
+
+        else:
+            print('El coche con matrícula %s no se está moviendo' % self.matricula)
