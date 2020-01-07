@@ -16,6 +16,7 @@ class Persona:
         self.localResidiencia = []
         self.profesion = None
         self.datosVarios = []
+        self.parentescoSangre = True
 
     def getId(self):
         return self.id
@@ -73,6 +74,12 @@ class Persona:
 
     def setDatosVarios(self, dato:str):
         self.datosVarios.append(dato)
+
+    def getParentescoSangre(self):
+        return self.parentescoSangre
+
+    def setParentescoSangre(self, parentescoSangre:bool):
+        self.parentescoSangre = parentescoSangre
 
 
 
