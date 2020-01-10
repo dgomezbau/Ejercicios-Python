@@ -41,4 +41,4 @@ class Wall(object):
     
     def draw_walls(self, walls, screen):
         for wall in walls:
-            pg.draw.rect(screen, (200,25,0), wall, 2)
+            pg.draw.rect(screen, (200,25,0), wall, 0)
