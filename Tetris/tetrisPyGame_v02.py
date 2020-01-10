@@ -73,11 +73,10 @@ def main():
         screen.fill((100, 100, 20))
 
 
-        pz = piezas.Pieza(random.randrange(1,15))
+        pz = piezas.Pieza(random.randrange(7))
+        pz.setFigure_number(random.randrange(len(pz.official_figure_list[pz.number])))
         pz_list = pz.figure_to_rect()
         pz.draw_rects(pz_list, screen)
-
-
 
         while not colision_wall_down and not colision_fixed:
             last_key = None
@@ -91,25 +90,44 @@ def main():
                     if event.key == pg.K_RIGHT:
                         pz.move_right(pz_list, screen)
                         last_key = "R"
+                    if event.key == pg.K_SPACE:
+                        pz_list = pz.rotation(True, screen)
+                        pz.draw_rects(pz_list, screen)
+                        last_key = "SPACE"
             
             for pz_rect in pz_list:
                 for wall_rect in wall_left:
                     if wall_rect.colliderect(pz_rect):
-                        pz.move_right(pz_list, screen)
+                        if last_key == "L":
+                            pz.move_right(pz_list, screen)
+                        elif last_key == "SPACE":
+                            pz_list = pz.rotation(True, screen)
+                            pz.draw_rects(pz_list, screen)
 
                 for fixed in complete_estructure:
                     if fixed.colliderect(pz_rect):
                         if last_key == "L":
                             pz.move_right(pz_list, screen)
+                        elif last_key == "SPACE":
+                            pz_list = pz.rotation(True, screen)
+                            pz.draw_rects(pz_list, screen)
 
                 for wall_rect in wall_rigth:
                     if wall_rect.colliderect(pz_rect):
-                        pz.move_left(pz_list, screen)
+                        if last_key == "R":
+                            pz.move_left(pz_list, screen)
+                        elif last_key == "SPACE":
+                            pz_list = pz.rotation(True, screen)
+                            pz.draw_rects(pz_list, screen)
 
                 for fixed in complete_estructure:
                     if fixed.colliderect(pz_rect):
                         if last_key == "R":
                             pz.move_left(pz_list, screen)
+                        elif last_key == "SPACE":
+                            pz_list = pz.rotation(True, screen)
+                            pz.draw_rects(pz_list, screen)
+
                 
                 for fixed in complete_estructure:
                     if fixed.colliderect(pz_rect):
